@@ -34,7 +34,7 @@
             <div class="flex justify-center items-center flex-col w-full bg-white p-4 border">
                 <p class="text-sm">
                     Don't have an account?
-                    <router-link to="/" class="font-bold"> Sign up </router-link>
+                    <router-link to="/signup" class="font-bold"> Sign up </router-link>
                 </p>
             </div>
         </div>
