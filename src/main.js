@@ -4,8 +4,23 @@ import router from './router.js';
 import store from './store/index.js';
 import './index.css';
 
-const app = createApp(App);
-app.use(store);
-app.use(router);
+//firebase
+import { auth } from './hooks/useFirebase.js';
 
-app.mount('#app');
+//import seed from './seed.js';
+
+//seed();
+
+let app;
+auth.onAuthStateChanged(user => {
+    if (!app) {
+        app = createApp(App);
+        app.use(store);
+        app.use(router);
+        app.mount('#app');
+    }
+    if (user) {
+        store.dispatch('storeLogin', { userId: user.uid });
+        store.dispatch('users/loadUser', user);
+    }
+});

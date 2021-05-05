@@ -7,14 +7,20 @@
                 </h1>
                 <p v-if="!!error" class="mb-4 text-xs text-red-500 text-center">{{ error }}</p>
                 <!-- error -->
-
+                <p v-if="!!usernameIsAvailable" class="mb-4 text-xs text-red-500 text-center">
+                    {{ usernameIsAvailable }}
+                </p>
+                <!-- username error -->
                 <form @submit.prevent="onSubmit">
                     <input
                         aria-label="Enter your username"
                         class="text-sm text-gray w-full mr-3 py-5 px-4 h-2 border bg-gray-background rounded mb-2"
+                        :class="{ 'border-red-600': !!usernameIsAvailable }"
                         type="text"
                         placeholder="Username"
                         v-model="username"
+                        @blur="checkUsernameAvailability"
+                        @focus="usernameFocus"
                     />
                     <input
                         aria-label="Enter your full name"
@@ -61,6 +67,7 @@
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { ref, computed } from 'vue';
+import * as fb from '../hooks/useFirebase.js';
 export default {
     setup() {
         const username = ref('');
@@ -68,6 +75,7 @@ export default {
         const email = ref('');
         const password = ref('');
         const error = ref(null);
+        const usernameIsAvailable = ref(null);
 
         const store = useStore();
         const router = useRouter();
@@ -80,6 +88,23 @@ export default {
                 password.value === ''
             );
         });
+
+        const usernameFocus = () => {
+            usernameIsAvailable.value = null;
+        };
+
+        const checkUsernameAvailability = async () => {
+            try {
+                const res = await fb.usersCollection.where('username', '==', username.value).get();
+                console.log(res.docs);
+                const result = res.docs.map(user => user.data().length > 0);
+                console.log(result);
+                if (result.length !== 0)
+                    usernameIsAvailable.value = 'Username already taken, please pick another.';
+            } catch (error) {
+                console.log(error.message);
+            }
+        };
 
         const onSubmit = async () => {
             error.value = null;
@@ -118,6 +143,9 @@ export default {
             isInvalid,
             onSubmit,
             error,
+            checkUsernameAvailability,
+            usernameFocus,
+            usernameIsAvailable,
         };
     },
 };
