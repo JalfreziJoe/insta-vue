@@ -72,7 +72,7 @@ export default {
                     email: email.value,
                     password: password.value,
                 });
-                console.log('login success');
+                //console.log('login success');
                 await store.dispatch('users/loadUser', { uid: store.getters.userId });
                 router.replace('/');
             } catch (err) {

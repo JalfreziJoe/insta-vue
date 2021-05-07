@@ -38,8 +38,8 @@ export default {
         });
 
         const addANewComment = comment => {
-            console.log('new comment');
-            console.log(comment);
+            //console.log('new comment');
+            //console.log(comment);
             // get username
             const username = store.getters['users/username'];
             // store new comment in the comments array
@@ -49,7 +49,7 @@ export default {
                 .update({ comments: fb.firestore.FieldValue.arrayUnion({ username, comment }) });
         };
 
-        console.log(comments);
+        //console.log(comments);
 
         return {
             top3Comments,

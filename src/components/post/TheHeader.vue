@@ -4,7 +4,7 @@
             <router-link :to="'/p/' + username" class="flex items-center">
                 <img
                     class="rounded-full h-8 w-8 flex mr-3"
-                    :src="'src/assets/images/avatars/' + username + '.jpg'"
+                    :src="'/assets/images/avatars/' + username + '.jpg'"
                     :alt="username + ' profile picture'"
                 />
                 <p class="font-bold">{{ username }}</p>

@@ -4,7 +4,7 @@
             <img
                 class="rounded-full h-40 w-40 flex"
                 :alt="profileUsername + ' profile picture'"
-                :src="`/src/assets/images/avatars/${profileUsername}.jpg`"
+                :src="`/assets/images/avatars/${profileUsername}.jpg`"
             />
         </div>
         <div class="flex items-center justify-center flex-col col-span-2">
@@ -64,7 +64,7 @@ export default {
         const store = useStore();
         //console.dir(props);
         const { photoCount, profile, followersCount } = toRefs(props);
-        console.log(followersCount.value);
+        //console.log(followersCount.value);
         const isFollowingProfile = ref(false);
         const {
             docId: profileDocId,

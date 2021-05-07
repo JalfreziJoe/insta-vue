@@ -56,14 +56,14 @@ export default {
             }
         },
         storeLogin(context, payload) {
-            console.log('auth checkLogin');
+            //console.log('auth checkLogin');
 
             context.commit('setUser', { userId: payload.userId });
 
             //context.dispatch('users/loadUser');
         },
         clearAuth(context) {
-            console.log('clearAuth');
+            //console.log('clearAuth');
 
             fb.auth.signOut();
 
@@ -80,13 +80,13 @@ export default {
             return state.userId;
         },
         isAuthenticated(state) {
-            console.log('isAuthenticated');
+            //console.log('isAuthenticated');
             return !!state.userId;
         },
     },
     mutations: {
         setUser(state, payload) {
-            console.log('auth mutations setUser');
+            //console.log('auth mutations setUser');
 
             state.userId = payload.userId;
         },

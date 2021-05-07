@@ -24,7 +24,7 @@ export default {
         const { username } = route.params;
         const doesExist = ref(undefined);
         const getUser = ref(null);
-        console.log(username);
+        //console.log(username);
 
         watchEffect(async () => {
             // get user by username

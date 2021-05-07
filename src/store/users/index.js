@@ -18,8 +18,8 @@ export default {
     },
     getters: {
         username(state) {
-            console.log('users getters username');
-            console.log(state.user.username);
+            //console.log('users getters username');
+            //console.log(state.user.username);
             return state.user.username;
         },
         following(state) {
@@ -29,31 +29,31 @@ export default {
             return state.user.fullname;
         },
         isUserLoaded(state) {
-            console.log('userloaded:', state.userLoaded);
+            //console.log('userloaded:', state.userLoaded);
             return state.userLoaded;
         },
     },
     actions: {
         async loadUser(context, payload) {
-            console.log('actions loadUser');
+            //console.log('actions loadUser');
             context.commit('setUser', payload.uid, null, { root: true });
             // if (context.getters.username !== '') {
             //     console.log('user already loaded');
             //     return;
             // }
             //const userId = context.rootGetters.userId;
-            console.log(payload.uid);
+            //console.log(payload.uid);
             try {
                 const res = await fb.usersCollection.doc(payload.uid).get();
                 if (!res.exists) {
                     throw new Error('Error getting user');
                 }
-                console.log(res.data());
+                //console.log(res.data());
 
                 context.commit('setUser', res.data());
                 context.commit('setUserLoaded');
             } catch (err) {
-                console.log('loadUser error');
+                //console.log('loadUser error');
                 throw new Error(err.message);
             }
         },
@@ -78,7 +78,7 @@ export default {
                 const res = fb.usersCollection.doc(userId).set({
                     ...newUser,
                 });
-                console.log('saved user');
+                //console.log('saved user');
                 console.dir(res.data);
             } catch (error) {
                 throw new Error(error.message);
@@ -101,7 +101,7 @@ export default {
     },
     mutations: {
         setUser(state, payload) {
-            console.log('user mutations setuser');
+            //console.log('user mutations setuser');
             state.user = payload;
         },
         setUserLoaded(state) {

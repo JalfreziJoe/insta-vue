@@ -39,7 +39,7 @@ export default {
         });
 
         const haveProfileLength = computed(() => {
-            console.log(result.value);
+            //console.log(result.value);
             if (result.value != '' && result.value.length > 0) {
                 return true;
             } else {

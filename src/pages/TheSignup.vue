@@ -96,22 +96,22 @@ export default {
         const checkUsernameAvailability = async () => {
             try {
                 const res = await fb.usersCollection.where('username', '==', username.value).get();
-                console.log(res.docs);
+                //console.log(res.docs);
                 const result = res.docs.map(user => user.data().length > 0);
-                console.log(result);
+                //console.log(result);
                 if (result.length !== 0)
                     usernameIsAvailable.value = 'Username already taken, please pick another.';
             } catch (error) {
-                console.log(error.message);
+                //console.log(error.message);
             }
         };
 
         const onSubmit = async () => {
             error.value = null;
-            console.log(`username: ${username.value}`);
-            console.log(`fullname: ${fullname.value}`);
-            console.log(`email: ${email.value}`);
-            console.log(`password: ${password.value}`);
+            //console.log(`username: ${username.value}`);
+            //console.log(`fullname: ${fullname.value}`);
+            //console.log(`email: ${email.value}`);
+            //console.log(`password: ${password.value}`);
             if (!email.value.includes('@')) {
                 error.value = 'Please enter a valid email address.';
                 return;
@@ -122,7 +122,7 @@ export default {
                     email: email.value,
                     password: password.value,
                 });
-                console.log('sign up success: ' + store.getters.userId);
+                //console.log('sign up success: ' + store.getters.userId);
                 // add new user to db
                 await store.dispatch('users/saveUser', {
                     username: username.value,

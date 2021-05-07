@@ -56,7 +56,7 @@ export async function getSuggestedProfiles(id) {
     // get all following users
     const following = store.getters['users/following'];
 
-    console.log(result);
+    //console.log(result);
     // map all users and return a filter that doesn't include the following users
     return result.docs
         .map(profile => ({ ...profile.data(), docId: profile.id }))
@@ -65,9 +65,9 @@ export async function getSuggestedProfiles(id) {
 
 export async function updateUserFollowing(docId, profileId, isFollowingProfile, isUpdateFollowing) {
     let followUpdate = {};
-    console.log(isUpdateFollowing);
-    console.log(docId);
-    console.log(profileId);
+    //console.log(isUpdateFollowing);
+    //console.log(docId);
+    //console.log(profileId);
     if (isUpdateFollowing) {
         followUpdate = {
             following: isFollowingProfile
@@ -85,32 +85,32 @@ export async function updateUserFollowing(docId, profileId, isFollowingProfile, 
 }
 
 export async function toggleFollow(isFollowing, loggedInUserId, profileId) {
-    console.log(isFollowing, profileId, loggedInUserId);
+    //console.log(isFollowing, profileId, loggedInUserId);
     await updateUserFollowing(loggedInUserId, profileId, !isFollowing, true);
     await updateUserFollowing(profileId, loggedInUserId, !isFollowing, false);
 }
 
 export async function getUserPhotosByUserId(userId) {
-    console.log('getUserPhotosByUserId');
+    //console.log('getUserPhotosByUserId');
     const res = await fb.photosCollection.where('userId', '==', userId).get();
     let photos = [];
     if (res.docs.length > 0) {
         photos = res.docs.map(photo => ({ ...photo.data(), docId: photo.id }));
     }
-    console.log(photos);
+    //console.log(photos);
     return photos;
 }
 
 export async function isLoggedInUserFollowing(username, profileId) {
-    console.log('isLoggedInUserFollowing');
-    console.log(username);
-    console.log(profileId);
+    //console.log('isLoggedInUserFollowing');
+    //console.log(username);
+    //console.log(profileId);
     const res = await fb.usersCollection
         .where('username', '==', username)
         .where('following', 'array-contains', profileId)
         .get();
     console.dir(res.docs);
     const [response = {}] = res.docs.map(item => ({ ...item.data(), docId: item.id }));
-    console.log(response);
+    //console.log(response);
     return !!response.fullname;
 }

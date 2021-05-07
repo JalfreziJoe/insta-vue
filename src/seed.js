@@ -1,7 +1,7 @@
 import * as fb from './hooks/useFirebase.js';
 
 export default async function seed() {
-    console.log('hey Im seeding here');
+    //console.log('hey Im seeding here');
     const photo = {
         photoId: '1',
         userId: 'jZiJ5wJCdOWgEQRqMXsamz3Par93',

@@ -55,7 +55,7 @@
                             <router-link :to="'/p/' + username">
                                 <img
                                     class="rounded-full h-8 w-8 flex"
-                                    :src="'/src/assets/images/avatars/' + username + '.jpg'"
+                                    :src="'/assets/images/avatars/' + username + '.jpg'"
                                     :alt="username + ' profile picture'"
                                 />
                             </router-link>
@@ -88,15 +88,18 @@
 <script>
 import { useStore } from 'vuex';
 import { computed } from 'vue';
+import { useRouter } from 'vue-router';
 export default {
     setup() {
         const store = useStore();
+        const router = useRouter();
         function logout() {
-            console.log('logout');
+            //console.log('logout');
             store.dispatch('clearAuth');
+            router.replace('/login');
         }
         const isLoggedIn = computed(() => {
-            console.log('isLoggedIn');
+            //console.log('isLoggedIn');
             return useStore().getters['isAuthenticated'];
         });
         const userLoaded = computed(() => {

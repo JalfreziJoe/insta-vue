@@ -26,7 +26,7 @@ export default {
         const followersCount = ref(0);
         const profile = inject('user');
         console.dir(profile);
-        console.log(profile.value.followers.length);
+        //console.log(profile.value.followers.length);
 
         watchEffect(async () => {
             // get photos by username

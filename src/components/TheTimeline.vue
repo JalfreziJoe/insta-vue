@@ -41,16 +41,16 @@ export default {
         // });
 
         const loadPhotos = async () => {
-            console.log('loadPhotos');
+            //console.log('loadPhotos');
             if (!isUserLoaded) {
                 return;
             }
-            console.log('loaded loadPhotos');
+            //console.log('loaded loadPhotos');
             photos.value = await useFollowedUserPhotos(
                 store.getters.userId,
                 store.getters['users/following']
             );
-            console.log(photos);
+            //console.log(photos);
             isLoading.value = false;
         };
 

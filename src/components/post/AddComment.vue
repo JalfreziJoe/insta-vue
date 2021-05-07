@@ -34,7 +34,7 @@ export default {
     setup(_, context) {
         const comment = ref('');
         const inputComment = ref(null);
-        console.log('inputComment: ' + inputComment);
+        //console.log('inputComment: ' + inputComment);
 
         const onSubmit = event => {
             // check comment is greater than 2 chars

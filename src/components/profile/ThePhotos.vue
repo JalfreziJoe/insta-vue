@@ -27,15 +27,15 @@ export default {
         };
     },
     created() {
-        console.log(this.photos);
+        //console.log(this.photos);
     },
     components: {
         ContentLoader,
     },
     watch: {
         photos(newValue, oldValue) {
-            console.log('watching photos - new value:', newValue);
-            console.log('watching photos - old value:', oldValue);
+            //console.log('watching photos - new value:', newValue);
+            //console.log('watching photos - old value:', oldValue);
             this.loading = false;
         },
     },

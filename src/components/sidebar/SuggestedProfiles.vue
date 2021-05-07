@@ -25,7 +25,7 @@ export default {
     },
     computed: {
         avatarSrc() {
-            return `src/assets/images/avatars/${this.username}.jpg`;
+            return `/assets/images/avatars/${this.username}.jpg`;
         },
         getFollowed() {
             return this.followed;

@@ -37,7 +37,7 @@ export default {
 
     methods: {
         commentFocus() {
-            //console.log('comment focus');
+            ////console.log('comment focus');
             //console.dir(this.$refs.inputComment.inputComment.inputComment);
             this.$refs.inputComment.inputComment.inputComment.focus();
         },

@@ -10,10 +10,10 @@ import NotFound from './pages/NotFound.vue';
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/', component: Dashboard },
+        { path: '/', component: Dashboard, meta: { requiresAuth: true } },
         { path: '/login', component: Login, meta: { requiresUnAuth: true } },
         { path: '/signup', component: Signup, meta: { requiresUnAuth: true } },
-        { path: '/p/:username', component: Profile, meta: { requiresAuth: true } },
+        { path: '/p/:username', component: Profile },
         { path: '/:notfound(.*)', component: NotFound },
     ],
 });

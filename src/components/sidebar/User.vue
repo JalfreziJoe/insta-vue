@@ -20,7 +20,7 @@ export default {
     props: ['username', 'fullname'],
     computed: {
         avatarImg() {
-            return `src/assets/images/avatars/${this.username}.jpg`;
+            return `/assets/images/avatars/${this.username}.jpg`;
         },
     },
 };
